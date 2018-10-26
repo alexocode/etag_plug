@@ -46,8 +46,6 @@ defmodule ETag.Plug do
 
   import Plug.Conn,
     only: [
-      get_req_header: 2,
-      put_resp_header: 3,
       register_before_send: 2,
       resp: 3
     ]
@@ -68,15 +66,15 @@ defmodule ETag.Plug do
     end
   end
 
-  def should_handle_etag?(conn, opts) do
-    valid_method?(conn, opts) and valid_status?(conn, opts)
+  defp should_handle_etag?(conn, opts) do
+    relevant_method?(conn, opts) and relevant_status?(conn, opts)
   end
 
-  defp valid_method?(%Plug.Conn{method: method}, opts) do
+  defp relevant_method?(%Plug.Conn{method: method}, opts) do
     String.upcase(method) in Keyword.fetch!(opts, :methods)
   end
 
-  defp valid_status?(%Plug.Conn{status: status}, opts) do
+  defp relevant_status?(%Plug.Conn{status: status}, opts) do
     Plug.Conn.Status.code(status) in Keyword.fetch!(opts, :status_codes)
   end
 
@@ -87,7 +85,7 @@ defmodule ETag.Plug do
 
       etag ->
         conn
-        |> add_etag(etag)
+        |> ETag.put(etag)
         |> respond_304_if_not_modified(etag)
     end
   end
@@ -98,30 +96,13 @@ defmodule ETag.Plug do
     |> apply(:generate, [content])
   end
 
-  defp add_etag(conn, etag), do: put_resp_header(conn, "etag", etag)
-
   defp respond_304_if_not_modified(conn, etag) do
     conn
-    |> get_req_header("if-none-match")
-    |> etags_match?(etag)
+    |> ETag.match?(etag)
     |> if do
       resp(conn, 304, "")
     else
       conn
     end
-  end
-
-  defp etags_match?([], _etag), do: false
-  defp etags_match?(etag, etag), do: true
-
-  defp etags_match?(received_etags, etag) when is_list(received_etags),
-    do: etag in received_etags
-
-  defp etags_match?(other, _etag) do
-    Logger.warn(fn ->
-      "Unexpected 'if-none-match' header value: #{inspect(other)}"
-    end)
-
-    false
   end
 end
