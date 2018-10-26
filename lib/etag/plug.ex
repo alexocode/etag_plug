@@ -28,9 +28,9 @@ defmodule ETag.Plug do
 
   Expects a module implementing the `ETag.Generator` behaviour. The plug ships
   with a number of "default" generators:
-  - `ETag.MD5`
-  - `ETag.SHA1`
-  - `ETag.SHA512`
+  - `ETag.Generator.MD5`
+  - `ETag.Generator.SHA1`
+  - `ETag.Generator.SHA512`
 
   ### Default
 
