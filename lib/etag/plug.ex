@@ -1,6 +1,6 @@
 defmodule ETag.Plug do
   @moduledoc """
-  This plug generates shallow [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag).
+  A drop in plug to add support for shallow [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag).
 
   Shallow means that it uses the whole response to generate the ETag and does
   not care about the specific content of each response. It is not context
@@ -28,9 +28,9 @@ defmodule ETag.Plug do
 
   Expects a module implementing the `ETag.Generator` behaviour. The plug ships
   with a number of "default" generators:
-  - `ETag.MD5`
-  - `ETag.SHA1`
-  - `ETag.SHA512`
+  - `ETag.Generator.MD5`
+  - `ETag.Generator.SHA1`
+  - `ETag.Generator.SHA512`
 
   ### Default
 

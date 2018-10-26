@@ -5,13 +5,7 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version here
       - image: circleci/elixir:1.7
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
 
     working_directory: ~/repo
     steps:
@@ -32,7 +26,11 @@ jobs:
             - v1-build-cache-{{ .Branch }}
             - v1-build-cache
 
-      - run: mix do deps.get, compile
+      - run:
+          name: Setup Dependencies
+          command: mix do deps.get, compile
+          environment:
+            MIX_ENV: test
 
       # Save Cache
       - save_cache:  # generate and store mix cache
@@ -52,4 +50,8 @@ jobs:
           paths: "_build"
 
       # Test
-      - run: mix test
+      - run:
+          name: Run Tests
+          command: mix coveralls.circle
+          environment:
+            MIX_ENV: test

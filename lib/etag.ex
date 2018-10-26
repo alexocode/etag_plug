@@ -1,9 +1,9 @@
 defmodule ETag do
   @moduledoc """
-  This module provides a number of util functions to interact with ETags in
-  `Plug.Conn`, it allows you to fetch the sent ETag (`if-none-match`-header),
-  set the generated ETag (`etag`-header) and compare a given ETag with the ETag
-  in the `Plug.Conn`.
+  This module provides a number of util functions to interact with ETags in a `Plug.Conn`.
+
+  It allows you to fetch the sent ETag (`if-none-match`-header), set the generated
+  ETag (`etag`-header) and compare a given ETag with the ETag in the `Plug.Conn`.
 
   ## Functions
   - `get_all/1`
