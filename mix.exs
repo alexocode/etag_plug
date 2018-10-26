@@ -39,6 +39,9 @@ defmodule ETagPlug.MixProject do
     [
       {:plug, "~> 1.0"},
 
+      # Docs
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
+
       # Test
       {:excoveralls, "~> 0.10", only: :test}
     ]
