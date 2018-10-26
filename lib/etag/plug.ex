@@ -1,6 +1,6 @@
 defmodule ETag.Plug do
   @moduledoc """
-  This plug generates shallow ETags.
+  This plug generates shallow [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag).
 
   Shallow means that it uses the whole response to generate the ETag and does
   not care about the specific content of each response. It is not context
@@ -8,6 +8,20 @@ defmodule ETag.Plug do
 
   For a deep (speak context sensitive) generation of ETags you can take a look
   at [Phoenix ETag](https://github.com/michalmuskala/phoenix_etag).
+
+  # Usage
+
+  You can simply use the plug without any configuration, it then defaults to the
+  configuration as specified in the "Configuration" section.
+
+      plug ETag.Plug
+
+  You can also provide a number of options, see the "Configuration" section for details.
+
+      plug ETag.Plug,
+        generator: MyCustomGenerator,
+        methods: ["GET", "HEAD"],
+        status_codes: [:ok, 201, :not_modified]
 
   # Configuration
   ## `generator`
@@ -35,8 +49,8 @@ defmodule ETag.Plug do
 
   ## `status_codes`
 
-  Expects an enumerable of integers which define the statuses for which ETags
-  should be handled and generated.
+  Expects an enumerable of integers (or status atoms) which define the statuses
+  for which ETags should be handled and generated.
 
   ### Default
 
