@@ -1,4 +1,6 @@
-# EtagPlug
+# ETagPlug
+
+[![CircleCI](https://circleci.com/gh/Zeeker/etag_plug.svg?style=svg)](https://circleci.com/gh/Zeeker/etag_plug)
 
 **TODO: Add description**
 
