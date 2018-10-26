@@ -1,6 +1,6 @@
 defmodule ETag.Plug do
   @moduledoc """
-  This plug generates shallow [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag).
+  A drop in plug to add support for shallow [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag).
 
   Shallow means that it uses the whole response to generate the ETag and does
   not care about the specific content of each response. It is not context
