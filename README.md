@@ -25,16 +25,21 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 
 You can simply use the plug without any configuration, it then defaults to the configuration as specified in the "Configuration" section.
 
-    plug ETag.Plug
+```elixir
+plug ETag.Plug
+```
 
 You can also provide a number of options, see the "Configuration" section for details.
 
-    plug ETag.Plug,
-      generator: MyCustomGenerator,
-      methods: ["GET", "HEAD"],
-      status_codes: [:ok, 201, :not_modified]
+```elixir
+plug ETag.Plug,
+  generator: MyCustomGenerator,
+  methods: ["GET", "HEAD"],
+  status_codes: [:ok, 201, :not_modified]
+```
 
 ## Configuration
+
 ### `generator`
 
 Expects a module implementing the `ETag.Generator` behaviour. The plug ships with a number of "default" generators:
