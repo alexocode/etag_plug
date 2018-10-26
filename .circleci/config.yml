@@ -26,7 +26,11 @@ jobs:
             - v1-build-cache-{{ .Branch }}
             - v1-build-cache
 
-      - run: mix do deps.get, compile
+      - run:
+          name: Setup Dependencies
+          command: mix do deps.get, compile
+          environment:
+            MIX_ENV: test
 
       # Save Cache
       - save_cache:  # generate and store mix cache
