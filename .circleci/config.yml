@@ -46,4 +46,8 @@ jobs:
           paths: "_build"
 
       # Test
-      - run: mix coveralls.circle
+      - run:
+          name: Run Tests
+          command: mix coveralls.circle
+          environment:
+            MIX_ENV: test
