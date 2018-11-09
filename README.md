@@ -2,6 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/Zeeker/etag_plug.svg?style=svg)](https://circleci.com/gh/Zeeker/etag_plug)
 [![Coverage Status](https://coveralls.io/repos/github/Zeeker/etag_plug/badge.svg?branch=master)](https://coveralls.io/github/Zeeker/etag_plug?branch=master)
+[![Hex.pm](https://img.shields.io/hexpm/v/etag_plug.svg)](https://hex.pm/packages/etag_plug/)
+[![License](https://img.shields.io/github/license/zeeker/etag_plug.svg)](https://github.com/Zeeker/etag_plug/blob/master/LICENSE.md)
 
 This plug generates shallow [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag).
 
