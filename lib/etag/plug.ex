@@ -1,4 +1,6 @@
 defmodule ETag.Plug do
+  alias ETag.Plug.Options
+
   @moduledoc """
   A drop in plug to add support for shallow [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag).
 
@@ -34,8 +36,8 @@ defmodule ETag.Plug do
 
   ### Default
 
-      iex> Application.fetch_env!(:etag_plug, :generator)
-      #{inspect(Application.fetch_env!(:etag_plug, :generator))}
+      iex> Application.get_env(:etag_plug, :generator, #{inspect(Options.default(:generator))})
+      #{inspect(Options.default(:generator))}
 
   ## `methods`
 
@@ -44,8 +46,8 @@ defmodule ETag.Plug do
 
   ### Default
 
-      iex> Application.fetch_env!(:etag_plug, :methods)
-      #{inspect(Application.fetch_env!(:etag_plug, :methods))}
+      iex> Application.get_env(:etag_plug, :methods, #{inspect(Options.default(:methods))})
+      #{inspect(Options.default(:methods))}
 
   ## `status_codes`
 
@@ -54,8 +56,8 @@ defmodule ETag.Plug do
 
   ### Default
 
-      iex> Application.fetch_env!(:etag_plug, :status_codes)
-      #{inspect(Application.fetch_env!(:etag_plug, :status_codes))}
+      iex> Application.get_env(:etag_plug, :status_codes, #{inspect(Options.default(:status_codes))})
+      #{inspect(Options.default(:status_codes))}
   """
 
   import Plug.Conn,
@@ -66,7 +68,7 @@ defmodule ETag.Plug do
 
   require Logger
 
-  defdelegate init(opts), to: ETag.Plug.Options, as: :sanitize!
+  defdelegate init(opts), to: Options, as: :sanitize!
 
   def call(conn, opts) do
     register_before_send(conn, &handle_etag(&1, opts))

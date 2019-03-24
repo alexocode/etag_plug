@@ -8,6 +8,12 @@ defmodule ETag.Plug.Options do
   For details on their usage, values and defaults take a look at the `ETag.Plug` module.
   """
 
+  @defaults %{
+    generator: ETag.Generator.SHA1,
+    methods: ["GET"],
+    status_codes: [200]
+  }
+
   @spec sanitize!(Keyword.t()) :: Keyword.t()
   def sanitize!(opts) do
     unless Keyword.keyword?(opts) do
@@ -17,17 +23,23 @@ defmodule ETag.Plug.Options do
     end
 
     opts
-    |> with_default!(:generator)
-    |> with_default!(:methods)
-    |> with_default!(:status_codes)
+    |> with_default(:generator)
+    |> with_default(:methods)
+    |> with_default(:status_codes)
     |> do_sanitize!()
   end
 
-  defp with_default!(opts, key) do
-    Keyword.put_new_lazy(opts, key, fn -> config!(key) end)
+  @spec defaults() :: Keyword.t()
+  def defaults, do: unquote(Enum.to_list(@defaults))
+
+  @spec default(key :: atom()) :: Keyword.t()
+  def default(key), do: @defaults[key]
+
+  defp with_default(opts, key) do
+    Keyword.put_new_lazy(opts, key, fn -> config(key) end)
   end
 
-  defp config!(key), do: Application.fetch_env!(:etag_plug, key)
+  defp config(key), do: Application.get_env(:etag_plug, key, default(key))
 
   defp do_sanitize!(opts) do
     opts

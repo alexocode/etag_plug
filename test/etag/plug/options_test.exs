@@ -1,7 +1,7 @@
 defmodule ETag.Plug.OptionsTest do
   use ExUnit.Case, async: true
 
-  import ETag.Plug.Options, only: [sanitize!: 1]
+  import ETag.Plug.Options, only: [sanitize!: 1, defaults: 0]
 
   describe ".sanitize!" do
     test "with a bullshit atom, returns the defaults" do
@@ -83,13 +83,5 @@ defmodule ETag.Plug.OptionsTest do
     actual = Enum.sort(actual)
 
     assert expected == actual
-  end
-
-  defp defaults do
-    [
-      generator: Application.fetch_env!(:etag_plug, :generator),
-      methods: Application.fetch_env!(:etag_plug, :methods),
-      status_codes: Application.fetch_env!(:etag_plug, :status_codes)
-    ]
   end
 end
