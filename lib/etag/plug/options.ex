@@ -32,7 +32,7 @@ defmodule ETag.Plug.Options do
   @spec defaults() :: Keyword.t()
   def defaults, do: unquote(Enum.to_list(@defaults))
 
-  @spec default(key :: atom()) :: Keyword.t()
+  @spec default(key :: atom()) :: any()
   def default(key), do: @defaults[key]
 
   defp with_default(opts, key) do
