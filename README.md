@@ -42,6 +42,17 @@ plug ETag.Plug,
 
 ## Configuration
 
+A full configuration equal to the defaults could look like this:
+
+```elixir
+config :etag_plug,
+  generator: ETag.Generator.SHA1,
+  methods: ["GET"],
+  status_codes: [200]
+```
+
+Each of these options is explained in detail below.
+
 ### `generator`
 
 Expects a module implementing the `ETag.Generator` behaviour. The plug ships with a number of "default" generators:
