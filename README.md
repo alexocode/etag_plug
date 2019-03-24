@@ -50,16 +50,16 @@ Expects a module implementing the `ETag.Generator` behaviour. The plug ships wit
 - `ETag.Generator.SHA1`
 - `ETag.Generator.SHA512`
 
-__Default__: `Application.fetch_env!(:etag_plug, :generator)`
+__Default__: `Application.get_env(:etag_plug, :generator, ETag.Generator.SHA1)`
 
 ### `methods`
 
 Expects a list of strings, describing the HTTP methods for which ETags should be generated and evaluated.
 
-__Default__: `Application.fetch_env!(:etag_plug, :methods)`
+__Default__: `Application.get_env(:etag_plug, :methods, ["GET"])`
 
 ### `status_codes`
 
 Expects an enumerable of integers (or status atoms) which define the statuses for which ETags should be handled and generated.
 
-__Default__: `Application.fetch_env!(:etag_plug, :status_codes)`
+__Default__: `Application.get_env(:etag_plug, :status_codes, [200])`
