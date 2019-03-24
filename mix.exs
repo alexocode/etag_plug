@@ -1,6 +1,8 @@
 defmodule ETagPlug.MixProject do
   use Mix.Project
 
+  @version "version" |> File.read!() |> String.trim()
+
   def project do
     [
       app: :etag_plug,
@@ -23,7 +25,7 @@ defmodule ETagPlug.MixProject do
       # Hex
       description: description(),
       package: package(),
-      version: "0.1.0"
+      version: @version
     ]
   end
 
@@ -53,6 +55,7 @@ defmodule ETagPlug.MixProject do
 
   def package do
     [
+      files: ["lib", "mix.exs", "LICENSE*", "README*", "version"],
       licenses: ["MIT"],
       links: %{
         "GitHub" => "https://github.com/Zeeker/etag_plug"
