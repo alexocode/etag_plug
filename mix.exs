@@ -19,8 +19,8 @@ defmodule ETagPlug.MixProject do
 
       # Docs
       name: "ETag Plug",
-      source_url: "https://github.com/Zeeker/etag_plug",
-      homepage_url: "https://github.com/Zeeker/etag_plug",
+      source_url: "https://github.com/sascha-wolf/etag_plug",
+      homepage_url: "https://github.com/sascha-wolf/etag_plug",
 
       # Hex
       description: description(),
@@ -58,7 +58,7 @@ defmodule ETagPlug.MixProject do
       files: ["lib", "mix.exs", "LICENSE*", "README*", "version"],
       licenses: ["MIT"],
       links: %{
-        "GitHub" => "https://github.com/Zeeker/etag_plug"
+        "GitHub" => "https://github.com/sascha-wolf/etag_plug"
       },
       maintainers: ["Sascha Wolf <swolf.dev@gmail.com>"]
     ]
