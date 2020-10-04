@@ -21,7 +21,7 @@ The plug can be installed by adding `etag_plug` to your list of dependencies in 
 ```elixir
 def deps do
   [
-    {:etag_plug, "~> 1.0.0"}
+    {:etag_plug, "~> 1.0"}
   ]
 end
 ```
