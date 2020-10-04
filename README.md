@@ -9,6 +9,11 @@ This plug generates shallow [ETags](https://developer.mozilla.org/en-US/docs/Web
 
 Shallow means that it uses the whole response to generate the ETag and does not care about the specific content of each response. It is not context sensitive. For a deep (speak context sensitive) generation of ETags you can take a look at [Phoenix ETag](https://github.com/michalmuskala/phoenix_etag).
 
+**NOTE**:
+While this plug may seem stale, it's just stable.
+There is nothing else to do, it "just works".
+As such don't be afraid to use it in production. 🙂
+
 ## Installation
 
 The plug can be installed by adding `etag_plug` to your list of dependencies in `mix.exs`:
