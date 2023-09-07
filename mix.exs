@@ -1,12 +1,10 @@
 defmodule ETagPlug.MixProject do
   use Mix.Project
 
-  @version "version" |> File.read!() |> String.trim()
-
   def project do
     [
       app: :etag_plug,
-      elixir: "~> 1.7",
+      elixir: ">= 1.7.4 and < 2.0.0",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       preferred_cli_env: [
@@ -25,7 +23,7 @@ defmodule ETagPlug.MixProject do
       # Hex
       description: description(),
       package: package(),
-      version: @version
+      version: version()
     ]
   end
 
@@ -42,25 +40,41 @@ defmodule ETagPlug.MixProject do
       {:plug, "~> 1.0"},
 
       # Docs
-      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.30", only: :dev, runtime: false},
 
       # Test
-      {:excoveralls, "~> 0.10", only: :test}
+      {:excoveralls, "~> 0.17", only: :test}
     ]
   end
 
   def description do
-    "A simple to use plug for shallow ETags"
+    "A straight-forward plug for shallow ETags"
   end
 
   def package do
     [
-      files: ["lib", "mix.exs", "LICENSE*", "README*", "version"],
+      files: ["lib", "mix.exs", "CHANGELOG*", "LICENSE*", "README*", "version"],
       licenses: ["MIT"],
       links: %{
-        "GitHub" => "https://github.com/sascha-wolf/etag_plug"
+        "GitHub" => "https://github.com/sascha-wolf/knigge"
       },
-      maintainers: ["Sascha Wolf <swolf.dev@gmail.com>"]
+      maintainers: ["Sascha Wolf <dev@saschawolf.me>"]
     ]
+  end
+
+  @version_file "version"
+  def version do
+    cond do
+      File.exists?(@version_file) ->
+        @version_file
+        |> File.read!()
+        |> String.trim()
+
+      System.get_env("REQUIRE_VERSION_FILE") == "true" ->
+        exit("Version file (`#{@version_file}`) doesn't exist but is required!")
+
+      true ->
+        "0.0.0-dev"
+    end
   end
 end
