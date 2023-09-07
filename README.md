@@ -1,8 +1,10 @@
-# ETagPlug
+# ETag.Plug
 
-[![CircleCI](https://circleci.com/gh/sascha-wolf/etag_plug.svg?style=svg)](https://circleci.com/gh/sascha-wolf/etag_plug)
-[![Coverage Status](https://coveralls.io/repos/github/sascha-wolf/etag_plug/badge.svg?branch=master)](https://coveralls.io/github/sascha-wolf/etag_plug?branch=master)
-[![Hex.pm](https://img.shields.io/hexpm/v/etag_plug.svg)](https://hex.pm/packages/etag_plug/)
+[![CI](https://github.com/sascha-wolf/etag_plug/workflows/CI/badge.svg)](https://github.com/sascha-wolf/etag_plug/actions?query=branch%3Amain+workflow%3ACI)
+[![Coverage Status](https://coveralls.io/repos/github/sascha-wolf/etag_plug/badge.svg?branch=main)](https://coveralls.io/github/sascha-wolf/etag_plug?branch=main)
+[![Hexdocs.pm](https://img.shields.io/badge/hexdocs-online-blue)](https://hexdocs.pm/etag_plug/)
+[![Hex.pm](https://img.shields.io/hexpm/v/etag_plug.svg)](https://hex.pm/packages/etag_plug)
+[![Hex.pm Downloads](https://img.shields.io/hexpm/dt/etag_plug)](https://hex.pm/packages/etag_plug)
 [![License](https://img.shields.io/github/license/sascha-wolf/etag_plug.svg)](https://github.com/sascha-wolf/etag_plug/blob/master/LICENSE.md)
 
 This plug generates shallow [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag).
@@ -66,16 +68,16 @@ Expects a module implementing the `ETag.Generator` behaviour. The plug ships wit
 - `ETag.Generator.SHA1`
 - `ETag.Generator.SHA512`
 
-__Default__: `Application.get_env(:etag_plug, :generator, ETag.Generator.SHA1)`
+**Default**: `Application.get_env(:etag_plug, :generator, ETag.Generator.SHA1)`
 
 ### `methods`
 
 Expects a list of strings, describing the HTTP methods for which ETags should be generated and evaluated.
 
-__Default__: `Application.get_env(:etag_plug, :methods, ["GET"])`
+**Default**: `Application.get_env(:etag_plug, :methods, ["GET"])`
 
 ### `status_codes`
 
 Expects an enumerable of integers (or status atoms) which define the statuses for which ETags should be handled and generated.
 
-__Default__: `Application.get_env(:etag_plug, :status_codes, [200])`
+**Default**: `Application.get_env(:etag_plug, :status_codes, [200])`
