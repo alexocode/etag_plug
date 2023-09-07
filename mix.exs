@@ -4,7 +4,7 @@ defmodule ETagPlug.MixProject do
   def project do
     [
       app: :etag_plug,
-      elixir: "~> 1.7",
+      elixir: ">= 1.7.4 and < 2.0.0",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       preferred_cli_env: [
