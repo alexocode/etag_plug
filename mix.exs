@@ -39,8 +39,10 @@ defmodule ETagPlug.MixProject do
     [
       {:plug, "~> 1.0"},
 
-      # Docs
+      # Development
       {:ex_doc, "~> 0.30", only: :dev, runtime: false},
+      {:credo, ">= 1.0.0", only: :dev, runtime: false},
+      {:dialyxir, "~> 1.0", only: :dev, runtime: false},
 
       # Test
       {:excoveralls, "~> 0.17", only: :test}
