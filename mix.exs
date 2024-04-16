@@ -2,6 +2,7 @@ defmodule ETagPlug.MixProject do
   use Mix.Project
 
   @version "version" |> File.read!() |> String.trim()
+  @repo "https://github.com/alexocode/etag_plug"
 
   def project do
     [
@@ -19,8 +20,8 @@ defmodule ETagPlug.MixProject do
 
       # Docs
       name: "ETag Plug",
-      source_url: "https://github.com/sascha-wolf/etag_plug",
-      homepage_url: "https://github.com/sascha-wolf/etag_plug",
+      source_url: @repo,
+      homepage_url: @repo,
 
       # Hex
       description: description(),
@@ -58,9 +59,9 @@ defmodule ETagPlug.MixProject do
       files: ["lib", "mix.exs", "LICENSE*", "README*", "version"],
       licenses: ["MIT"],
       links: %{
-        "GitHub" => "https://github.com/sascha-wolf/etag_plug"
+        "GitHub" =>@repo
       },
-      maintainers: ["Sascha Wolf <swolf.dev@gmail.com>"]
+      maintainers: ["Alex Wolf <swolf.dev@gmail.com>"]
     ]
   end
 end

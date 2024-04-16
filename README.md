@@ -1,9 +1,9 @@
 # ETagPlug
 
-[![CircleCI](https://circleci.com/gh/sascha-wolf/etag_plug.svg?style=svg)](https://circleci.com/gh/sascha-wolf/etag_plug)
-[![Coverage Status](https://coveralls.io/repos/github/sascha-wolf/etag_plug/badge.svg?branch=master)](https://coveralls.io/github/sascha-wolf/etag_plug?branch=master)
+[![CircleCI](https://circleci.com/gh/alexocode/etag_plug.svg?style=svg)](https://circleci.com/gh/alexocode/etag_plug)
+[![Coverage Status](https://coveralls.io/repos/github/alexocode/etag_plug/badge.svg?branch=master)](https://coveralls.io/github/alexocode/etag_plug?branch=master)
 [![Hex.pm](https://img.shields.io/hexpm/v/etag_plug.svg)](https://hex.pm/packages/etag_plug/)
-[![License](https://img.shields.io/github/license/sascha-wolf/etag_plug.svg)](https://github.com/sascha-wolf/etag_plug/blob/master/LICENSE.md)
+[![License](https://img.shields.io/github/license/alexocode/etag_plug.svg)](https://github.com/alexocode/etag_plug/blob/master/LICENSE.md)
 
 This plug generates shallow [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag).
 
