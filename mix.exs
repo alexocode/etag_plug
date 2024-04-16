@@ -1,6 +1,8 @@
 defmodule ETagPlug.MixProject do
   use Mix.Project
 
+  @repo "https://github.com/alexocode/etag_plug"
+
   def project do
     [
       app: :etag_plug,
@@ -17,8 +19,8 @@ defmodule ETagPlug.MixProject do
 
       # Docs
       name: "ETag Plug",
-      source_url: "https://github.com/sascha-wolf/etag_plug",
-      homepage_url: "https://github.com/sascha-wolf/etag_plug",
+      source_url: @repo,
+      homepage_url: @repo,
 
       # Hex
       description: description(),
@@ -39,6 +41,9 @@ defmodule ETagPlug.MixProject do
     [
       {:plug, "~> 1.0"},
 
+      # Telemetry
+      {:telemetry, "~> 1.0", optional: true},
+
       # Development
       {:ex_doc, "~> 0.30", only: :dev, runtime: false},
       {:credo, ">= 1.0.0", only: :dev, runtime: false},
@@ -58,9 +63,9 @@ defmodule ETagPlug.MixProject do
       files: ["lib", "mix.exs", "CHANGELOG*", "LICENSE*", "README*", "version"],
       licenses: ["MIT"],
       links: %{
-        "GitHub" => "https://github.com/sascha-wolf/knigge"
+        "GitHub" => @repo
       },
-      maintainers: ["Sascha Wolf <dev@saschawolf.me>"]
+      maintainers: ["Alex Wolf <craft@alexocode.dev>"]
     ]
   end
 

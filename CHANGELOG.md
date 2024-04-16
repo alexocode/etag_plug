@@ -11,5 +11,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 No changes, just bumping to 1.0.0 as to highlight that this library is stable and not expected to change.
 
-[Unreleased]: https://github.com/sascha-wolf/knigge/compare/v1.0.0...main
-[1.0.0]: https://github.com/sascha-wolf/etag_plug/compare/v0.2.0...v1.0.0
+[Unreleased]: https://github.com/alexocode/knigge/compare/v1.0.0...main
+[1.0.0]: https://github.com/alexocode/etag_plug/compare/v0.2.0...v1.0.0

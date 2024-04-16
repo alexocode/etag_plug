@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2018-present Sascha Wolf
+Copyright (c) 2018-present Alex Wolf <craft@alexocode.dev>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

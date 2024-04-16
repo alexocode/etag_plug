@@ -1,11 +1,11 @@
 # ETag.Plug
 
-[![CI](https://github.com/sascha-wolf/etag_plug/workflows/CI/badge.svg)](https://github.com/sascha-wolf/etag_plug/actions?query=branch%3Amain+workflow%3ACI)
-[![Coverage Status](https://coveralls.io/repos/github/sascha-wolf/etag_plug/badge.svg?branch=main)](https://coveralls.io/github/sascha-wolf/etag_plug?branch=main)
+[![CI](https://github.com/alexocode/etag_plug/workflows/CI/badge.svg)](https://github.com/alexocode/etag_plug/actions?query=branch%3Amain+workflow%3ACI)
+[![Coverage Status](https://coveralls.io/repos/github/alexocode/etag_plug/badge.svg?branch=main)](https://coveralls.io/github/alexocode/etag_plug?branch=main)
 [![Hexdocs.pm](https://img.shields.io/badge/hexdocs-online-blue)](https://hexdocs.pm/etag_plug/)
 [![Hex.pm](https://img.shields.io/hexpm/v/etag_plug.svg)](https://hex.pm/packages/etag_plug)
 [![Hex.pm Downloads](https://img.shields.io/hexpm/dt/etag_plug)](https://hex.pm/packages/etag_plug)
-[![License](https://img.shields.io/github/license/sascha-wolf/etag_plug.svg)](https://github.com/sascha-wolf/etag_plug/blob/master/LICENSE.md)
+[![License](https://img.shields.io/github/license/alexocode/etag_plug.svg)](https://github.com/alexocode/etag_plug/blob/master/LICENSE.md)
 
 This plug generates shallow [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag).
 
