@@ -73,25 +73,35 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Compute Cache Key
+        id: cache
+        run: echo 'key=env:${{ env.MIX_ENV }}-alpine:${{ env.VERSION_ALPINE }}-elixir:${{ env.VERSION_ELIXIR }}-otp:${{ env.VERSION_OTP }}' >$GITHUB_OUTPUT
+
       - name: Cache - deps/
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
-          path: deps/
-          key: ${{ env.CACHE_PREFIX_DEPS }}-env:${{ env.MIX_ENV }}-alpine:${{ env.VERSION_ALPINE }}-elixir:${{ env.VERSION_ELIXIR }}-otp:${{ env.VERSION_OTP }}-${{ hashFiles('**/mix.lock') }}
-          restore-keys: ${{ env.CACHE_PREFIX_DEPS }}-env:${{ env.MIX_ENV }}-alpine:${{ env.VERSION_ALPINE }}-elixir:${{ env.VERSION_ELIXIR }}-otp:${{ env.VERSION_OTP }}-
+          path: |
+            deps/
+            _build/
+            !_build/${{ env.MIX_ENV }}/lib/etag_plug/
+          key: ${{ env.CACHE_PREFIX_DEPS }}-${{ steps.cache.outputs.key }}-${{ hashFiles('mix.lock') }}
+          restore-keys: |
+            ${{ env.CACHE_PREFIX_DEPS }}-${{ steps.cache.outputs.key }}-
 
       - name: Install Dependencies
         run: |
           mix local.rebar --force
           mix local.hex --force
           mix deps.get --only "$MIX_ENV"
+          mix deps.compile
 
       - name: Cache - _build/
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: _build/
-          key: ${{ env.CACHE_PREFIX_BUILD }}-env:${{ env.MIX_ENV }}-alpine:${{ env.VERSION_ALPINE }}-elixir:${{ env.VERSION_ELIXIR }}-otp:${{ env.VERSION_OTP }}-${{ hashFiles('**/mix.lock') }}
-          restore-keys: ${{ env.CACHE_PREFIX_BUILD }}-env:${{ env.MIX_ENV }}-alpine:${{ env.VERSION_ALPINE }}-elixir:${{ env.VERSION_ELIXIR }}-otp:${{ env.VERSION_OTP }}-
+          key: ${{ env.CACHE_PREFIX_BUILD }}-${{ steps.cache.outputs.key }}-${{ hashFiles('mix.exs', 'lib/**/*.ex') }}
+          restore-keys: |
+            ${{ env.CACHE_PREFIX_BUILD }}-${{ steps.cache.outputs.key }}-
 
       - run: mix compile --warnings-as-errors
       - run: mix test
